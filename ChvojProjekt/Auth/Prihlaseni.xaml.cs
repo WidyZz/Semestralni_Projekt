@@ -23,7 +23,7 @@ namespace ChvojProjekt.Auth
     public partial class Prihlaseni : Window
     {
         //Props
-        static public int UserID { get; set; }
+        public int UserID { get; set; }
         static public string Jmeno { get; set; }
         static private string Heslo { get; set; }
         static private string IsAdmin { get; set; }
