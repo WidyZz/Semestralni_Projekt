@@ -13,8 +13,8 @@ namespace ChvojProjekt
     /// </summary>
     public partial class MainWindow : Window
     {
-        Prihlaseni prihlaseni = new Prihlaseni();
-        DBDataGrid dBDataGrid = new DBDataGrid();
+        public int UserID { get; set; }
+        public DBDataGrid dBDataGrid = new DBDataGrid();
         public MainWindow()
         { 
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace ChvojProjekt
         {
             DataTable dtbl = new DataTable();
             GridData.Items.Refresh();
-            dBDataGrid.SQLPridatDoKosiku(dtbl);
+            dBDataGrid.SQLPridatDoKosiku(dtbl, UserID);
         }
         private void OdebratBtn_Click(object sender, EventArgs e)
         {
@@ -58,6 +58,7 @@ namespace ChvojProjekt
 
         private void Odhlaseni(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            Prihlaseni prihlaseni = new Prihlaseni();
             this.Hide();
             prihlaseni.Show();
         }
