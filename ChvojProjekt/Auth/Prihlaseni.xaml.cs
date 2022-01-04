@@ -27,6 +27,7 @@ namespace ChvojProjekt.Auth
         static public string Jmeno { get; set; }
         static private string Heslo { get; set; }
         static private string IsAdmin { get; set; }
+        //Definovani
         
         //Init
         public Prihlaseni()
@@ -38,10 +39,7 @@ namespace ChvojProjekt.Auth
             Jmeno = PrJmeno.Text.Trim();
             Heslo = PrHeslo.Password.ToString();
         }
-        //SQL
-        string query = "Select * from Auth Where Jmeno = '" + Jmeno + "' AND Heslo = '" + Heslo + "'";
-        Autentifikace autentifikace = new Autentifikace();
-        DataTable dtbl = new DataTable("Auth");
+
         /// <summary>
         /// Tato metoda se vyvolá po úspěšném přihlášení
         /// Tato metoda určuje podle oprávnění, zda se má v menu objevit Zakaznici
@@ -52,21 +50,25 @@ namespace ChvojProjekt.Auth
             MainWindow mainWindow = new MainWindow();
             if (IsAdmin != "A")
                 mainWindow.RBZakaznik.Visibility = Visibility.Collapsed;
+            mainWindow.UserID = this.UserID;
             this.Hide();
             mainWindow.Show();
-            
-        }
-        public void SetUserID()
-        {
-            UserID = (int)dtbl.Rows[0][0];
         }
         //Prihlasovaci tlacitko
         private void PrihlaseniBtn(object sender, EventArgs e)
         {
             Init();
+            //SQL
+            string query = "Select * from Auth Where Jmeno = '" + Jmeno + "' AND Heslo = '" + Heslo + "'";
+            Autentifikace autentifikace = new Autentifikace();
+            DataTable dtbl = new DataTable("Auth");
             autentifikace.SQLAutentifikace(query, dtbl);
             if (dtbl.Rows.Count > 0)
             {
+                
+                this.UserID = (int)dtbl.Rows[0][0];
+                
+                MessageBox.Show($"{this.UserID}", "DEBUG", MessageBoxButton.OK);
                 //data z IsAdmin sloupce
                 IsAdmin = dtbl.Rows[0][5].ToString();
                 //vyvolání aplikace
@@ -76,7 +78,6 @@ namespace ChvojProjekt.Auth
                     MessageBox.Show($"Vítejte Admine: \n\r{Jmeno.ToUpper()}", "Úspěšné přihlášení", MessageBoxButton.OK, MessageBoxImage.Information);
                 else
                     MessageBox.Show($"Vítejte {Jmeno}!", "Úspěšné přihlášení", MessageBoxButton.OK, MessageBoxImage.Information);
-                
             }
             else
             {
