@@ -23,21 +23,25 @@ namespace ChvojProjekt.Auth
     public partial class Prihlaseni : Window
     {
         //Props
-        public string Jmeno { get; set; }
-        private string Heslo { get; set; }
-        private string IsAdmin { get; set; }
+        static public int UserID { get; set; }
+        static public string Jmeno { get; set; }
+        static private string Heslo { get; set; }
+        static private string IsAdmin { get; set; }
+        
         //Init
-        private DBDataGrid dB;
         public Prihlaseni()
         {
             InitializeComponent();
-            this.dB = new DBDataGrid();
         }
         private void Init()
         {
             Jmeno = PrJmeno.Text.Trim();
             Heslo = PrHeslo.Password.ToString();
         }
+        //SQL
+        string query = "Select * from Auth Where Jmeno = '" + Jmeno + "' AND Heslo = '" + Heslo + "'";
+        Autentifikace autentifikace = new Autentifikace();
+        DataTable dtbl = new DataTable("Auth");
         /// <summary>
         /// Tato metoda se vyvolá po úspěšném přihlášení
         /// Tato metoda určuje podle oprávnění, zda se má v menu objevit Zakaznici
@@ -52,17 +56,17 @@ namespace ChvojProjekt.Auth
             mainWindow.Show();
             
         }
+        public void SetUserID()
+        {
+            UserID = (int)dtbl.Rows[0][0];
+        }
         //Prihlasovaci tlacitko
         private void PrihlaseniBtn(object sender, EventArgs e)
         {
             Init();
-            var query = "Select * from Auth Where Jmeno = '" + Jmeno + "' AND Heslo = '" + Heslo + "'";
-            Autentifikace autentifikace = new Autentifikace();
-            DataTable dtbl = new DataTable("Auth");
             autentifikace.SQLAutentifikace(query, dtbl);
             if (dtbl.Rows.Count > 0)
             {
-                this.dB.UserID = (int)dtbl.Rows[0][0];
                 //data z IsAdmin sloupce
                 IsAdmin = dtbl.Rows[0][5].ToString();
                 //vyvolání aplikace
