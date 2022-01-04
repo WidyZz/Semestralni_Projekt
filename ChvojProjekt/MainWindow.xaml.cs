@@ -22,24 +22,28 @@ namespace ChvojProjekt
         }
         private void RBProdukt_Click(object sender, EventArgs e)
         {
+            GridData.Columns.Clear();
             ProduktUpdate();
             OdebratBtn.Visibility = Visibility.Collapsed;
             PridatBtn.Visibility = Visibility.Visible;
         }
         private void RBKosik_Click(object sender, RoutedEventArgs e)
         {
+            GridData.Columns.Clear();
             KosikUpdate();
             OdebratBtn.Visibility = Visibility.Visible;
             PridatBtn.Visibility = Visibility.Collapsed;
         }
         private void RBObjednavky_Click(object sender, EventArgs e)
         {
+            GridData.Columns.Clear();
             ObjednavkyUpdate();
             OdebratBtn.Visibility = Visibility.Visible;
             PridatBtn.Visibility = Visibility.Collapsed;
         }
         private void RBZakaznik_Click(object sender, RoutedEventArgs e)
         {
+            GridData.Columns.Clear();
             ZakaznikUpdate();
             OdebratBtn.Visibility = Visibility.Visible;
             PridatBtn.Visibility = Visibility.Collapsed;
@@ -49,7 +53,15 @@ namespace ChvojProjekt
             DataTable dtbl = new DataTable();
             GetProductID();
             dBDataGrid.SQLPridatDoKosiku(dtbl, UserID, ProductID);
-            KosikUpdate();
+            if (RBKosik.IsChecked == true)
+                KosikUpdate();
+            else if (RBObjednavky.IsChecked == true)
+                ObjednavkyUpdate();
+            else if (RBProdukt.IsChecked == true)
+                ProduktUpdate();
+            else if (RBZakaznik.IsChecked == true)
+                ZakaznikUpdate();
+                
         }
         private void OdebratBtn_Click(object sender, EventArgs e)
         {
@@ -104,8 +116,6 @@ namespace ChvojProjekt
         }
         private void Refresh()
         {
-            GridData.Columns.Clear();
-            GridData.ItemsSource = null;
             GridData.Items.Refresh();
         }
         private void Odhlaseni(object sender, System.Windows.Input.MouseButtonEventArgs e)
