@@ -53,6 +53,7 @@ namespace ChvojProjekt
             DataTable dtbl = new DataTable();
             GetProductID();
             dBDataGrid.SQLPridatDoKosiku(dtbl, UserID, ProductID);
+            //Refresh podle stranky
             if (RBKosik.IsChecked == true)
                 KosikUpdate();
             else if (RBObjednavky.IsChecked == true)
