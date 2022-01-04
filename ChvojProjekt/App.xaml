@@ -1,0 +1,17 @@
+﻿<Application x:Class="ChvojProjekt.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ChvojProjekt.Auth"
+             StartupUri="/Auth/Prihlaseni.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Design\MenuRadioButton.xaml"/>
+                <ResourceDictionary Source="Design\ActionRadioButton.xaml"/>
+                <ResourceDictionary Source="Design\HesloDesign.xaml"/>
+                <ResourceDictionary Source="Design\AuthBtns.xaml"/>
+                <ResourceDictionary Source="Design\FormuleDesign.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
