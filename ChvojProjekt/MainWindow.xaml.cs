@@ -14,6 +14,7 @@ namespace ChvojProjekt
     public partial class MainWindow : Window
     {
         public int UserID { get; set; }
+        public int ProductID { get; set; }
         public DBDataGrid dBDataGrid = new DBDataGrid();
         public MainWindow()
         { 
@@ -27,8 +28,9 @@ namespace ChvojProjekt
         private void PridatBtn_Click(object sender, EventArgs e)
         {
             DataTable dtbl = new DataTable();
+            GetProductID();
+            dBDataGrid.SQLPridatDoKosiku(dtbl, UserID, ProductID);
             GridData.Items.Refresh();
-            dBDataGrid.SQLPridatDoKosiku(dtbl, UserID);
         }
         private void OdebratBtn_Click(object sender, EventArgs e)
         {
@@ -74,7 +76,22 @@ namespace ChvojProjekt
             dBDataGrid.SQLZakaznici(dtbl);
             Refresh();
             GridData.ItemsSource = dtbl.DefaultView;
-
+        }
+        //Metoda pro ziskani ID Produktu
+        private void GetProductID()
+        {
+            //
+            if (GridData.SelectedIndex != -1)
+            {
+                DataRowView productID = GridData.Items[GridData.SelectedIndex] as DataRowView;
+                ProductID = (int)productID.Row.ItemArray[0];
+                MessageBox.Show($"{productID.Row.ItemArray[0]}", "DEBUG", MessageBoxButton.OK);
+            }
+            else
+            {
+                MessageBox.Show($"Vyberte produkt", "UPOZORNĚNÍ", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            
         }
     }
 }
