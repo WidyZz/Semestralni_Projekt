@@ -47,11 +47,11 @@ namespace ChvojProjekt.Core
 
         public void SQLPridatDoKosiku(DataTable dtbl, int userID, int productID)
         {
-            MessageBox.Show($"{userID}", "DEBUG", MessageBoxButton.OK);
+            MessageBox.Show($"{userID}, {productID}", "DEBUG", MessageBoxButton.OK);
             try
             {
                 string queryPridatDoKosiku = "update KOSIK set Celkem_Kusu = Celkem_Kusu + 1 where ZakaznikID = " +  userID  + ";"
-                                           + "update PRODUKT set Kusu = Kusu - 1 where ProduktID=" + productID + ";";
+                                           + "update PRODUKT set Kusu = Kusu - 1 where Id=" + productID + ";";
                 SqlDataAdapter sda = new SqlDataAdapter(queryPridatDoKosiku, _connection);
                 sda.Fill(dtbl);
             }
