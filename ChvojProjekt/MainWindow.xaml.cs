@@ -36,6 +36,21 @@ namespace ChvojProjekt
         {
 
         }
+        private void RBObjednavky_Click(object sender, EventArgs e)
+        {
+
+            DataTable dtbl = new DataTable("Objednavky");
+            dBDataGrid.SQLObjednavky(dtbl);
+            Refresh();
+            GridData.ItemsSource = dtbl.DefaultView;
+        }
+        private void RBZakaznik_Click(object sender, RoutedEventArgs e)
+        {
+            DataTable dtbl = new DataTable("Auth");
+            dBDataGrid.SQLZakaznici(dtbl);
+            Refresh();
+            GridData.ItemsSource = dtbl.DefaultView;
+        }
         private void RBProdukt_Click(object sender, EventArgs e)
         {
             DataTable dtbl = new DataTable("Produkt");
@@ -43,11 +58,10 @@ namespace ChvojProjekt
             Refresh();
             GridData.ItemsSource = dtbl.DefaultView;
         }
-        private void RBObjednavky_Click(object sender, EventArgs e)
+        private void RBKosik_Click(object sender, RoutedEventArgs e)
         {
-
-            DataTable dtbl = new DataTable("Objednavky");
-            dBDataGrid.SQLObjednavky(dtbl);
+            DataTable dtbl = new DataTable("Kosik");
+            dBDataGrid.SQLKosik(dtbl);
             Refresh();
             GridData.ItemsSource = dtbl.DefaultView;
         }
@@ -70,13 +84,7 @@ namespace ChvojProjekt
             System.Windows.Application.Current.Shutdown();
         }
 
-        private void RBZakaznik_Click(object sender, RoutedEventArgs e)
-        {
-            DataTable dtbl = new DataTable("Auth");
-            dBDataGrid.SQLZakaznici(dtbl);
-            Refresh();
-            GridData.ItemsSource = dtbl.DefaultView;
-        }
+
         //Metoda pro ziskani ID Produktu
         private void GetProductID()
         {
@@ -85,7 +93,6 @@ namespace ChvojProjekt
             {
                 DataRowView productID = GridData.Items[GridData.SelectedIndex] as DataRowView;
                 ProductID = (int)productID.Row.ItemArray[0];
-                MessageBox.Show($"{productID.Row.ItemArray[0]}", "DEBUG", MessageBoxButton.OK);
             }
             else
             {
@@ -93,5 +100,7 @@ namespace ChvojProjekt
             }
             
         }
+
+        
     }
 }
