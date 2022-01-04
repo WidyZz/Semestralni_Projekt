@@ -20,50 +20,39 @@ namespace ChvojProjekt
         { 
             InitializeComponent();
         }
-        private void RegisterBtn_Click(object sender, EventArgs e)
+        private void RBProdukt_Click(object sender, EventArgs e)
         {
-            Registrace registrace = new Registrace();
-            registrace.Show();
+            OdebratBtn.Visibility = Visibility.Collapsed;
+            PridatBtn.Visibility = Visibility.Visible;
+        }
+        private void RBKosik_Click(object sender, RoutedEventArgs e)
+        {
+            KosikUpdate();
+            OdebratBtn.Visibility = Visibility.Visible;
+            PridatBtn.Visibility = Visibility.Collapsed;
+        }
+        private void RBObjednavky_Click(object sender, EventArgs e)
+        {
+            ObjednavkyUpdate();
+            OdebratBtn.Visibility = Visibility.Visible;
+            PridatBtn.Visibility = Visibility.Collapsed;
+        }
+        private void RBZakaznik_Click(object sender, RoutedEventArgs e)
+        {
+            ZakaznikUpdate();
+            OdebratBtn.Visibility = Visibility.Visible;
+            PridatBtn.Visibility = Visibility.Collapsed;
         }
         private void PridatBtn_Click(object sender, EventArgs e)
         {
             DataTable dtbl = new DataTable();
             GetProductID();
             dBDataGrid.SQLPridatDoKosiku(dtbl, UserID, ProductID);
-            GridData.Items.Refresh();
+            KosikUpdate();
         }
         private void OdebratBtn_Click(object sender, EventArgs e)
         {
-
-        }
-        private void RBObjednavky_Click(object sender, EventArgs e)
-        {
-
-            DataTable dtbl = new DataTable("Objednavky");
-            dBDataGrid.SQLObjednavky(dtbl);
-            Refresh();
-            GridData.ItemsSource = dtbl.DefaultView;
-        }
-        private void RBZakaznik_Click(object sender, RoutedEventArgs e)
-        {
-            DataTable dtbl = new DataTable("Auth");
-            dBDataGrid.SQLZakaznici(dtbl);
-            Refresh();
-            GridData.ItemsSource = dtbl.DefaultView;
-        }
-        private void RBProdukt_Click(object sender, EventArgs e)
-        {
-            DataTable dtbl = new DataTable("Produkt");
-            dBDataGrid.SQLProdukt(dtbl);
-            Refresh();
-            GridData.ItemsSource = dtbl.DefaultView;
-        }
-        private void RBKosik_Click(object sender, RoutedEventArgs e)
-        {
-            DataTable dtbl = new DataTable("Kosik");
-            dBDataGrid.SQLKosik(dtbl);
-            Refresh();
-            GridData.ItemsSource = dtbl.DefaultView;
+            //SWITCH CASE PODLE BUTTONU
         }
         private void Refresh()
         {
@@ -71,20 +60,40 @@ namespace ChvojProjekt
             GridData.ItemsSource = null;
             GridData.Items.Refresh();
         }
-
         private void Odhlaseni(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Prihlaseni prihlaseni = new Prihlaseni();
             this.Hide();
             prihlaseni.Show();
         }
-
-        private void TextBlock_MouseLeftButtonDown_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void ProduktUpdate()
         {
-            System.Windows.Application.Current.Shutdown();
+            DataTable dtbl = new DataTable("Produkt");
+            dBDataGrid.SQLProdukt(dtbl);
+            Refresh();
+            GridData.ItemsSource = dtbl.DefaultView;
         }
-
-
+        private void ObjednavkyUpdate()
+        {
+            DataTable dtbl = new DataTable("Objednavky");
+            dBDataGrid.SQLObjednavky(dtbl);
+            Refresh();
+            GridData.ItemsSource = dtbl.DefaultView;
+        }
+        private void KosikUpdate()
+        {
+            DataTable dtbl = new DataTable("Kosik");
+            dBDataGrid.SQLKosik(dtbl);
+            Refresh();
+            GridData.ItemsSource = dtbl.DefaultView;
+        }
+        private void ZakaznikUpdate()
+        {
+            DataTable dtbl = new DataTable("Auth");
+            dBDataGrid.SQLZakaznici(dtbl);
+            Refresh();
+            GridData.ItemsSource = dtbl.DefaultView;
+        }
         //Metoda pro ziskani ID Produktu
         private void GetProductID()
         {
@@ -100,7 +109,11 @@ namespace ChvojProjekt
             }
             
         }
+        private void TextBlock_MouseLeftButtonDown_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
 
-        
+
     }
 }
