@@ -22,6 +22,7 @@ namespace ChvojProjekt
         }
         private void RBProdukt_Click(object sender, EventArgs e)
         {
+            ProduktUpdate();
             OdebratBtn.Visibility = Visibility.Collapsed;
             PridatBtn.Visibility = Visibility.Visible;
         }
@@ -53,18 +54,6 @@ namespace ChvojProjekt
         private void OdebratBtn_Click(object sender, EventArgs e)
         {
             //SWITCH CASE PODLE BUTTONU
-        }
-        private void Refresh()
-        {
-            GridData.Columns.Clear();
-            GridData.ItemsSource = null;
-            GridData.Items.Refresh();
-        }
-        private void Odhlaseni(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            Prihlaseni prihlaseni = new Prihlaseni();
-            this.Hide();
-            prihlaseni.Show();
         }
         private void ProduktUpdate()
         {
@@ -112,6 +101,18 @@ namespace ChvojProjekt
         private void TextBlock_MouseLeftButtonDown_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
+        }
+        private void Refresh()
+        {
+            GridData.Columns.Clear();
+            GridData.ItemsSource = null;
+            GridData.Items.Refresh();
+        }
+        private void Odhlaseni(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Prihlaseni prihlaseni = new Prihlaseni();
+            this.Hide();
+            prihlaseni.Show();
         }
 
 
