@@ -45,13 +45,13 @@ namespace ChvojProjekt.Core
             sda.Fill(dtbl);
         }
 
-        public void SQLPridatDoKosiku(DataTable dtbl, int userID)
+        public void SQLPridatDoKosiku(DataTable dtbl, int userID, int productID)
         {
             MessageBox.Show($"{userID}", "DEBUG", MessageBoxButton.OK);
             try
             {
                 string queryPridatDoKosiku = "update KOSIK set Celkem_Kusu = Celkem_Kusu + 1 where ZakaznikID = " +  userID  + ";"
-                                           + "update PRODUKT set Kusu = Kusu - 1;";
+                                           + "update PRODUKT set Kusu = Kusu - 1 where ProduktID=" + productID + ";";
                 SqlDataAdapter sda = new SqlDataAdapter(queryPridatDoKosiku, _connection);
                 sda.Fill(dtbl);
             }
