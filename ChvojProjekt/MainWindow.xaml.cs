@@ -56,18 +56,31 @@ namespace ChvojProjekt
             dBDataGrid.SQLPridatDoKosiku(dtbl, UserID, ProductID);
             //Refresh podle stranky
             if (RBKosik.IsChecked == true)
-                KosikUpdate();
+            { KosikUpdate(); }
             else if (RBObjednavky.IsChecked == true)
-                ObjednavkyUpdate();
+            { ObjednavkyUpdate(); }
             else if (RBProdukt.IsChecked == true)
-                ProduktUpdate();
+            { ProduktUpdate(); }
             else if (RBZakaznik.IsChecked == true)
-                ZakaznikUpdate();
+            { ZakaznikUpdate(); }
                 
         }
         private void OdebratBtn_Click(object sender, EventArgs e)
         {
-            //SWITCH CASE PODLE BUTTONU
+            DataTable dtbl = new DataTable();
+            GetProductID();
+            if (RBKosik.IsChecked == true)
+            { 
+              dBDataGrid.SQLOdebratZKosiku(dtbl, UserID, ProductID);
+              KosikUpdate();
+            }
+            else if (RBObjednavky.IsChecked == true)
+            { }
+            else if (RBProdukt.IsChecked == true)
+            { }
+            else if (RBZakaznik.IsChecked == true)
+            { }
+
         }
         private void ProduktUpdate()
         {
@@ -106,11 +119,6 @@ namespace ChvojProjekt
                 DataRowView productID = GridData.Items[GridData.SelectedIndex] as DataRowView;
                 ProductID = (int)productID.Row.ItemArray[0];
             }
-            else
-            {
-                MessageBox.Show($"Vyberte produkt", "UPOZORNĚNÍ", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
-            
         }
         private void TextBlock_MouseLeftButtonDown_1(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -127,6 +135,11 @@ namespace ChvojProjekt
             prihlaseni.Show();
         }
 
-
+        private void ObjednatLbl_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DataTable dtbl = new DataTable("Kosik");
+            dBDataGrid.SQLObjednat(dtbl, UserID);
+            KosikUpdate();
+        }
     }
 }
