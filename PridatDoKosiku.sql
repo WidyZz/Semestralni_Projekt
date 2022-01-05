@@ -1,0 +1,2 @@
+﻿DECLARE @id INT = 1, @produktID INT = 7564
+IF EXISTS(SELECT ZakaznikID, ProduktID FROM Kosik where ZakaznikID = @id AND ProduktID = @produktID) BEGIN UPDATE Kosik set Celkem_Kusu = Celkem_Kusu + 1, Vytvoreno = GETDATE() where ZakaznikID = @id AND ProduktID = @produktID END ELSE BEGIN INSERT INTO Kosik (ZakaznikID, ProduktID, Celkem_Kusu, Vytvoreno) Values (@id, @produktID, 1, GETDATE()) END UPDATE Produkt SET Kusu = Kusu -1 WHERE Id = @produktID;
