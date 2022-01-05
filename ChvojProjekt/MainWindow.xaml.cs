@@ -19,6 +19,7 @@ namespace ChvojProjekt
         public MainWindow()
         { 
             InitializeComponent();
+            ProduktUpdate();
         }
         private void RBProdukt_Click(object sender, EventArgs e)
         {
