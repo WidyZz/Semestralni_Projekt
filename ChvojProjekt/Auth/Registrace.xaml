@@ -21,11 +21,11 @@
             <PasswordBox x:Name="RegHeslo" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="30" Margin="0,145,0,0" VerticalAlignment="Top" Width="206"/>
             <TextBox x:Name="RegEmail" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="30" Margin="0,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206"/>
             <TextBox x:Name="RegTelefon" VerticalContentAlignment="Center" HorizontalAlignment="Center" Height="30" Margin="0,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206"/>
-            <Label Content="Registrace" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontFamily="Viner Hand ITC" FontSize="20" RenderTransformOrigin="0.463,0.596"/>
-            <Label Content="Jméno" HorizontalAlignment="Left" Margin="50,57,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontFamily="Viner Hand ITC" FontSize="14" Width="54"/>
-            <Label Content="Heslo" HorizontalAlignment="Left" Margin="50,117,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontFamily="Viner Hand ITC" FontSize="14" Width="43"/>
-            <Label Content="E-mail" HorizontalAlignment="Left" Margin="50,175,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontFamily="Viner Hand ITC" FontSize="14" Width="64"/>
-            <Label Content="Telefon" HorizontalAlignment="Left" Margin="50,232,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontFamily="Viner Hand ITC" FontSize="14" Width="64"/>
+            <Label Content="Registrace" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke"  FontSize="20" RenderTransformOrigin="0.463,0.596"/>
+            <Label Content="Jméno" HorizontalAlignment="Left" Margin="45,57,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="14" Width="54"/>
+            <Label Content="Heslo" HorizontalAlignment="Left" Margin="45,117,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="14" Width="43"/>
+            <Label Content="E-mail" HorizontalAlignment="Left" Margin="45,177,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="14" Width="64"/>
+            <Label Content="Telefon" HorizontalAlignment="Left" Margin="45,237,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="14" Width="64"/>
             <TextBlock 
                 Text="CLG"
                 VerticalAlignment="Center"
