@@ -89,7 +89,7 @@
                          Margin="0,15,0,0"/>
             </StackPanel>
             <StackPanel Grid.Row="3" Grid.Column="1">
-                <RadioButton Content="➕"
+                <RadioButton Content="     ➕"
                          GroupName="OvladaciPrvky"
                          x:Name="PridatBtn"
                          Foreground="White"
@@ -97,10 +97,13 @@
                          Click="PridatBtn_Click"
                          FontSize="14"
                          Visibility="{Binding}"
-                         Style="{StaticResource ActionRadioButton}" Margin="0,0,50,0" Height="59"/>
+                         Style="{StaticResource ActionRadioButton}" Margin="0,0,60,0" Height="59"/>
             </StackPanel>
             <StackPanel Grid.Row="3" Grid.Column="1">
-                <RadioButton Content="➖"
+                <Label Content="Objednat" HorizontalAlignment="Right" Width="60" Height="60"
+                       VerticalContentAlignment="Center" Cursor="Hand" Visibility="{Binding}" x:Name="ObjednatLbl"
+                       Margin="0,0,120,0" Foreground="WhiteSmoke" MouseLeftButtonDown="ObjednatLbl_MouseLeftButtonDown"/>
+                <RadioButton Content="     ➖"
                          GroupName="OvladaciPrvky"
                          x:Name="OdebratBtn"
                          Foreground="White"
@@ -108,7 +111,8 @@
                          Click="OdebratBtn_Click"
                          FontSize="14"
                          Visibility="{Binding}"
-                         Style="{StaticResource ActionRadioButton}" Margin="0,0,15,0" Height="59" RenderTransformOrigin="1.101,0.483"/>
+                         Style="{StaticResource ActionRadioButton}" Margin="0,-60,0,0" Height="60" Width="60" 
+                             HorizontalContentAlignment="Center" RenderTransformOrigin="1.101,0.483"/>
             </StackPanel>
             <DataGrid Name="GridData" Grid.Row="2" Grid.Column="1"
                       ItemsSource="{Binding}"
@@ -147,6 +151,16 @@
                 FontSize="14"
                 HorizontalAlignment="Right"
                 Margin="0,0,10,55" Width="31" Cursor="Hand" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" RenderTransformOrigin="-0.749,0.53" Grid.Column="1" Grid.Row="1"/>
+            <Rectangle Fill="#FF1D1D1D" HorizontalAlignment="Left" Height="1" Grid.Row="3" Stroke="#FF1D1D1D" VerticalAlignment="Top" Width="800" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
         </Grid>
     </Border>
 </Window>
