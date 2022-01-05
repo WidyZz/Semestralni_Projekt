@@ -53,7 +53,7 @@
                              Foreground="White"
                              Click="RBProdukt_Click"
                              FontSize="14"
-                             Style="{StaticResource MenuRadioButton}"/>
+                             Style="{StaticResource MenuRadioButton}" IsChecked="True"/>
                 <RadioButton Content="🛒 Košík"
                              GroupName="Menu"
                              x:Name="RBKosik"
@@ -68,7 +68,7 @@
                              Foreground="White"
                              FontSize="14"
                              Click="RBObjednavky_Click"
-                             Style="{StaticResource MenuRadioButton}" IsChecked="True"/>
+                             Style="{StaticResource MenuRadioButton}"/>
                 <RadioButton Content="👥 Zákazníci"
                              GroupName="Menu"
                              x:Name="RBZakaznik"
