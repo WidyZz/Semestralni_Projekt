@@ -1,0 +1,1 @@
+﻿select ID, Jmeno, email as 'E-mail', Telefon, isadmin as 'Admin?' from Auth order by IsAdmin
