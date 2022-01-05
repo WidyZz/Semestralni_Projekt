@@ -17,9 +17,9 @@
                         Background="Transparent" Foreground="White" Margin="60,250,47,0" TextAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" Cursor="Hand"/>
             <Button Click="PrihlaseniBtn" Content="Přihlášení" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="194" Height="34" FontSize="18"
                     Background="Transparent" Foreground="White" Margin="58,0,47,75" Style="{StaticResource AuthDesign}" Cursor="Hand"/>
-            <Label Content="Přihlášení" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontFamily="Viner Hand ITC" FontSize="20"/>
-            <Label Content="Jméno" HorizontalAlignment="Left" Margin="60,62,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontFamily="Viner Hand ITC" FontSize="14" Width="54"/>
-            <Label Content="Heslo" HorizontalAlignment="Left" Margin="60,122,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontFamily="Viner Hand ITC" FontSize="14" Width="43" RenderTransformOrigin="-0.92,0.445"/>
+            <Label Content="Přihlášení" HorizontalAlignment="Center" Margin="0,15,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="20"/>
+            <Label Content="Jméno" HorizontalAlignment="Left" Margin="60,62,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="14" Width="54"/>
+            <Label Content="Heslo" HorizontalAlignment="Left" Margin="60,122,0,0" VerticalAlignment="Top" Foreground="WhiteSmoke" FontSize="14" Width="44" RenderTransformOrigin="-0.92,0.445"/>
             <TextBox x:Name="PrJmeno" HorizontalAlignment="Left" Height="25" Margin="58,92,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194"/>
             <PasswordBox x:Name="PrHeslo" HorizontalAlignment="Left" Margin="58,148,0,0" VerticalAlignment="Top" Width="194" Height="26"/>
             <TextBlock 
