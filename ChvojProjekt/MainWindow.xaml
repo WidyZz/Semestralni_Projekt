@@ -97,12 +97,12 @@
                          Click="PridatBtn_Click"
                          FontSize="14"
                          Visibility="{Binding}"
-                         Style="{StaticResource ActionRadioButton}" Margin="0,0,60,0" Height="59"/>
+                         Style="{StaticResource ActionRadioButton}" Margin="0,0,0,0" Height="59"/>
             </StackPanel>
             <StackPanel Grid.Row="3" Grid.Column="1">
                 <Label Content="Objednat" HorizontalAlignment="Right" Width="60" Height="60"
                        VerticalContentAlignment="Center" Cursor="Hand" Visibility="{Binding}" x:Name="ObjednatLbl"
-                       Margin="0,0,120,0" Foreground="WhiteSmoke" MouseLeftButtonDown="ObjednatLbl_MouseLeftButtonDown"/>
+                       Margin="0,0,60,0" Foreground="WhiteSmoke" MouseLeftButtonDown="ObjednatLbl_MouseLeftButtonDown"/>
                 <RadioButton Content="     ➖"
                          GroupName="OvladaciPrvky"
                          x:Name="OdebratBtn"

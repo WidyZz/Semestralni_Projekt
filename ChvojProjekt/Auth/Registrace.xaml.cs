@@ -89,7 +89,7 @@ namespace ChvojProjekt.Auth
                 
             }
         }
-
+        // Krizek -> ukonceni aplikace
         private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();

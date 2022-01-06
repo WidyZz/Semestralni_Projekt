@@ -28,7 +28,7 @@ namespace ChvojProjekt.Auth
         static private string Heslo { get; set; }
         static private string IsAdmin { get; set; }
         //Definovani
-        
+
         //Init
         public Prihlaseni()
         {
@@ -36,6 +36,7 @@ namespace ChvojProjekt.Auth
         }
         private void Init()
         {
+            //Prirazeni dat z textboxu
             Jmeno = PrJmeno.Text.Trim();
             Heslo = PrHeslo.Password.ToString();
         }
@@ -50,6 +51,8 @@ namespace ChvojProjekt.Auth
             MainWindow mainWindow = new MainWindow();
             if (IsAdmin != "A")
                 mainWindow.RBZakaznik.Visibility = Visibility.Collapsed;
+            else
+                mainWindow.IsAdmin = "A";
             mainWindow.UserID = this.UserID;
             this.Hide();
             mainWindow.Show();
