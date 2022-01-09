@@ -120,7 +120,7 @@ namespace ChvojProjekt
         private void ZakaznikUpdate()
         {
             // Neviditelna tlacitka
-            ObjednatLbl.Visibility = Visibility.Visible;
+            ObjednatLbl.Visibility = Visibility.Collapsed;
             OdebratBtn.Visibility = Visibility.Collapsed;
             PridatBtn.Visibility = Visibility.Collapsed;
             // Vytvoreni tabulky
