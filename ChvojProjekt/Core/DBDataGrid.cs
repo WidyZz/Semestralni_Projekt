@@ -92,20 +92,20 @@ namespace ChvojProjekt.Core
 
         }
         //Metoda pro odebirani polozek
-        public void SQLOdebrat(DataTable dtbl, int userID, int produktID, bool kosikIsChecked)
+        public void SQLOdebrat(DataTable dtbl, int userID, int rowID, bool kosikIsChecked)
         {
             try {
                 if (kosikIsChecked == true)
                 {
                     //Vysypani kosiku - Pricteni zbozi do dbo.Produkt, odstraneni radku v dbo.Kosik s id = produktID
-                    string queryOdebratZKosiku = "DECLARE @id INT = " + userID + ", @produktID INT = " + produktID + " UPDATE Produkt SET Kusu = Kusu + (Select Celkem_Kusu from Kosik where ZakaznikID = @id AND ProduktID = @produktID) where Id = @produktID; DELETE FROM KOSIK WHERE ZakaznikID = @id AND ProduktID = @produktID";
+                    string queryOdebratZKosiku = "DECLARE @id INT = "+userID+", @kosikID INT = " + rowID + " UPDATE Produkt SET Kusu = Kusu + (Select Celkem_Kusu from Kosik where ZakaznikID = @id AND Id = @kosikID) where Produkt.Id = (Select ProduktID from Kosik where Id = @kosikID and ZakaznikID = @id); DELETE FROM KOSIK WHERE ZakaznikID = @id AND Id = @kosikID";
                     SqlDataAdapter sda = new SqlDataAdapter(queryOdebratZKosiku, _connection);
                     sda.Fill(dtbl);
                 }
                 else
                 {
                     //Zruseni objednavky - Pricteni zbozi do dbo.Produkt, odstraneni radku v dbo.Objednavky s id = produktID
-                    string queryOdebratZObjednavek = "DECLARE @id INT = " + userID + ", @objednavkaID INT = " + produktID + " UPDATE Produkt SET Kusu = Kusu + (Select Kusu from Objednavky where ZakaznikID = @id AND Id = @objednavkaID) where Produkt.Id = (SELECT ProduktID from Objednavky where Id = @objednavkaID); DELETE FROM Objednavky WHERE ZakaznikID=@id and Id=@objednavkaID;";
+                    string queryOdebratZObjednavek = "DECLARE @id INT = " + userID + ", @objednavkaID INT = " + rowID + " UPDATE Produkt SET Kusu = Kusu + (Select Kusu from Objednavky where ZakaznikID = @id AND Id = @objednavkaID) where Produkt.Id = (SELECT ProduktID from Objednavky where Id = @objednavkaID); DELETE FROM Objednavky WHERE ZakaznikID=@id and Id=@objednavkaID;";
                     SqlDataAdapter sda = new SqlDataAdapter(queryOdebratZObjednavek, _connection);
                     sda.Fill(dtbl);
                 }
