@@ -1,1 +1,0 @@
-﻿alter table Objednavky add Cena as (SELECT Kusu * Cena FROM Kosik, Produkt where Kusu = Kosik.Kusu AND Cena = Produkt.Cena);
