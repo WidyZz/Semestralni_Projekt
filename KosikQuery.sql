@@ -1,1 +1,1 @@
-﻿Select Id as 'Číslo košíku', ZakaznikID as 'ID Zákazníka', ProduktID as 'Číslo produktu', Celkem_Kusu as 'Počet kusů', Vytvoreno as 'Vytvořeno' From Kosik order by Vytvoreno DESC
+﻿Select k.Id as 'Číslo košíku', a.Jmeno as 'Zákazník', p.Nazev as 'Produkt', Celkem_Kusu as 'Počet kusů', Vytvoreno as 'Vytvořeno' From Kosik k inner join Produkt p on k.ProduktID = p.Id inner join Auth a on k.ZakaznikID = a.Id
