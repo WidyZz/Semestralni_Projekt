@@ -94,11 +94,12 @@ namespace ChvojProjekt.Core
         //Metoda pro odebirani polozek
         public void SQLOdebrat(DataTable dtbl, int userID, int rowID, bool kosikIsChecked)
         {
-            try {
+            try
+            {
                 if (kosikIsChecked == true)
                 {
                     //Vysypani kosiku - Pricteni zbozi do dbo.Produkt, odstraneni radku v dbo.Kosik s id = produktID
-                    string queryOdebratZKosiku = "DECLARE @id INT = "+userID+", @kosikID INT = " + rowID + " UPDATE Produkt SET Kusu = Kusu + (Select Celkem_Kusu from Kosik where ZakaznikID = @id AND Id = @kosikID) where Produkt.Id = (Select ProduktID from Kosik where Id = @kosikID and ZakaznikID = @id); DELETE FROM KOSIK WHERE ZakaznikID = @id AND Id = @kosikID";
+                    string queryOdebratZKosiku = "DECLARE @id INT = " + userID + ", @kosikID INT = " + rowID + " UPDATE Produkt SET Kusu = Kusu + (Select Celkem_Kusu from Kosik where ZakaznikID = @id AND Id = @kosikID) where Produkt.Id = (Select ProduktID from Kosik where Id = @kosikID and ZakaznikID = @id); DELETE FROM KOSIK WHERE ZakaznikID = @id AND Id = @kosikID";
                     SqlDataAdapter sda = new SqlDataAdapter(queryOdebratZKosiku, _connection);
                     sda.Fill(dtbl);
                 }
