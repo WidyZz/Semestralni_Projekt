@@ -71,7 +71,6 @@ namespace ChvojProjekt.Auth
                 
                 this.UserID = (int)dtbl.Rows[0][0];
                 
-                MessageBox.Show($"{this.UserID}", "DEBUG", MessageBoxButton.OK);
                 //data z IsAdmin sloupce
                 IsAdmin = dtbl.Rows[0][5].ToString();
                 //vyvolání aplikace
