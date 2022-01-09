@@ -65,7 +65,7 @@ namespace ChvojProjekt.Core
             else
             {
                 //Pokud ne, tak jen osobni kosik
-                string queryKosikU = "DECLARE @id INT =" + userID + "  Select Id as 'Číslo košíku', ZakaznikID as 'ID Zákazníka', ProduktID as 'Číslo produktu', Celkem_Kusu as 'Počet kusů', Vytvoreno as 'Vytvořeno' From Kosik WHERE ZakaznikID = @id order by Vytvoreno DESC";
+                string queryKosikU = "DECLARE @id INT =" + userID + "  Select k.Id as 'Číslo košíku', a.Jmeno as 'Zákazník', p.Nazev as 'Produkt', Celkem_Kusu as 'Počet kusů', Vytvoreno as 'Vytvořeno' From Kosik k inner join Produkt p on k.ProduktID = p.Id inner join Auth a on k.ZakaznikID = a.Id WHERE ZakaznikID = @id order by Vytvoreno DESC";
                 SqlDataAdapter sda = new SqlDataAdapter(queryKosikU, _connection);
                 sda.Fill(dtbl);
             }
