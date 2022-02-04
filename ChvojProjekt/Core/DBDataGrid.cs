@@ -14,12 +14,12 @@ namespace ChvojProjekt.Core
     public class DBDataGrid
     {
         // SQL query -> Bez prizarovani C#ovych promennych
-        private string queryObjednavkyA = File.ReadAllText(@"D:\Users\vitch\Desktop\ChvojProjekt\ObjednavkyQueryA.sql");
-        private string queryUzivateleA = File.ReadAllText(@"D:\Users\vitch\Desktop\ChvojProjekt\AuthQuery.sql");
-        private string queryProdukt = File.ReadAllText(@"D:\Users\vitch\Desktop\ChvojProjekt\ProduktyQuery.sql");
-        private string queryKosikA = File.ReadAllText(@"D:\Users\vitch\Desktop\ChvojProjekt\KosikQuery.sql");
+        private string queryObjednavkyA = File.ReadAllText(@"~\Desktop\ChvojProjekt\ObjednavkyQueryA.sql");
+        private string queryUzivateleA = File.ReadAllText(@"~\Desktop\ChvojProjekt\AuthQuery.sql");
+        private string queryProdukt = File.ReadAllText(@"~\Desktop\ChvojProjekt\ProduktyQuery.sql");
+        private string queryKosikA = File.ReadAllText(@"~\Desktop\ChvojProjekt\KosikQuery.sql");
         // Pripojeni k SQL databazi
-        private SqlConnection _connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Users\vitch\Desktop\ChvojProjekt\ChvojProjekt\DB\DB.mdf;Integrated Security=True");
+        private SqlConnection _connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=~\Desktop\ChvojProjekt\ChvojProjekt\DB\DB.mdf;Integrated Security=True");
         // Vypis objednavek z dbo.Objednavky
         public void SQLObjednavky(DataTable dtbl, int userID, string IsAdmin)
         {
